@@ -18,19 +18,20 @@ counter = 0
 async def on_guild_join(guild):
     general = find(lambda x: x.name == 'bamboozled-again', guild.text_channels)
     if general and general.permissions_for(guild.me).send_messages:
-        await general.send('HAPPY BIRTHDAY PATRICK CAN I GET A POGGERS IN CHAT ALSO EDDIE IS VERY COOL AND GOOD AT LEAGUE OF LEGENDS AHAHA AMIRITE')
+        await general.send('HAPPY BIRTHDAY PATRICK')
 
 
 # On ready function; using it to test multiple different things that will occur when the bot turns on
 @client.event
 async def on_ready():
-    await client.change_presence(status=discord.Status.dnd,activity=discord.Game("Ur bootyhole"))
+    await client.change_presence(status=discord.Status.dnd,activity=discord.Game("Currently online!"))
 
     # Exclusive print statement for Timmy's discord 
-    # general = client.get_guild(145653809954291712)
-    # channel = client.get_channel(145653809954291712)
-    # if channel and channel.permissions_for(general.me).send_messages:
-    #     await channel.send("mha fans")
+    general = client.get_guild(371421304869486603)
+    channel = client.get_channel(784878328305287200)
+    if channel and channel.permissions_for(general.me).send_messages:
+        await channel.send("mha fans")
+        await channel.send(file=discord.File('./daeddie.jpg'))
 
     print("Bot is ready.")
 
@@ -41,10 +42,10 @@ async def on_message(message):
     general = client.get_guild(145653809954291712)
     channel = client.get_channel(145653809954291712)
 
-    # if message.content.strip() == "mha fans" and message.channel == channel:
-    global counter
-    counter += 1
-    print(counter)
+    if message.content.strip() == "mha fans" and message.channel == channel:
+        global counter
+        counter += 1
+        print(counter)
 
 
 # Test function to display the global counter 
@@ -58,8 +59,8 @@ async def mhacounter(ctx):
 async def test(ctx):
     await ctx.send(f"This is a test reply {round(client.latency * 1000)} ms")
 
-@client.command(aliases=['CUM'])
-async def cum(ctx):
+@client.command()
+async def daeddie(ctx):
     await ctx.send(file=discord.File('.\daeddie.jpg'))
 
 
